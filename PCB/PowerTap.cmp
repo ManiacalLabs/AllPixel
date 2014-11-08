@@ -1,0 +1,31 @@
+Cmp-Mod V01 Created by PcbNew date = 8/21/2014 6:25:28 PM
+
+BeginCmp
+TimeStamp = /53D3C960;
+Reference = C1;
+ValeurCmp = CP1;
+IdModule  = ML_CAP_DOUBLESIDED;
+EndCmp
+
+BeginCmp
+TimeStamp = /53D3C759;
+Reference = CON1;
+ValeurCmp = BARREL_JACK;
+IdModule  = ML_BARREL_JACK_ROUND_PADS_SHORT;
+EndCmp
+
+BeginCmp
+TimeStamp = /53F65D4E;
+Reference = JP1;
+ValeurCmp = INPUT;
+IdModule  = ML_SparkFun-1X04_LOCK_SCREW;
+EndCmp
+
+BeginCmp
+TimeStamp = /53CAE238;
+Reference = JP2;
+ValeurCmp = OUTPUT;
+IdModule  = ML_SparkFun-1X04_LOCK_SCREW;
+EndCmp
+
+EndListe

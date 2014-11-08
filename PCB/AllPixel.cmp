@@ -1,0 +1,185 @@
+Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = 10/5/2014 10:48:38 AM
+
+BeginCmp
+TimeStamp = /53CADD1C;
+Reference = C1;
+ValeurCmp = 22pF;
+IdModule  = ML_SparkFun-0603-CAP;
+EndCmp
+
+BeginCmp
+TimeStamp = /53CADD14;
+Reference = C2;
+ValeurCmp = 22pF;
+IdModule  = ML_SparkFun-0603-CAP;
+EndCmp
+
+BeginCmp
+TimeStamp = /53CAD8AA;
+Reference = C3;
+ValeurCmp = 1uF;
+IdModule  = c_1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /53CADB50;
+Reference = C4;
+ValeurCmp = 1uF;
+IdModule  = c_1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /53D3C960;
+Reference = C5;
+ValeurCmp = CP1;
+IdModule  = CP_10x12.5mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /53CAD527;
+Reference = CON1;
+ValeurCmp = ML_USB_MINI;
+IdModule  = ML_USB_MINI;
+EndCmp
+
+BeginCmp
+TimeStamp = /53D3C759;
+Reference = CON2;
+ValeurCmp = BARREL_JACK;
+IdModule  = ML_BARREL_JACK_ROUND_PADS_SHORT;
+EndCmp
+
+BeginCmp
+TimeStamp = /53D3C2D8;
+Reference = D1;
+ValeurCmp = LED;
+IdModule  = LED-1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /53E92290;
+Reference = D2;
+ValeurCmp = DIODE;
+IdModule  = D3;
+EndCmp
+
+BeginCmp
+TimeStamp = /53CAE553;
+Reference = F1;
+ValeurCmp = 500mA;
+IdModule  = c_1206;
+EndCmp
+
+BeginCmp
+TimeStamp = /53CAE113;
+Reference = JP1;
+ValeurCmp = AVR_ISP;
+IdModule  = ML_SparkFun-2X3_LOCK;
+EndCmp
+
+BeginCmp
+TimeStamp = /53CAE238;
+Reference = JP2;
+ValeurCmp = OUTPUT;
+IdModule  = ML_SparkFun-1X04_LOCK_SCREW;
+EndCmp
+
+BeginCmp
+TimeStamp = /53CADDCF;
+Reference = Q1;
+ValeurCmp = NPN;
+IdModule  = SOT23EBC;
+EndCmp
+
+BeginCmp
+TimeStamp = /53CADE23;
+Reference = R1;
+ValeurCmp = 1K;
+IdModule  = c_0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /53CADE11;
+Reference = R2;
+ValeurCmp = 10k;
+IdModule  = c_0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /53CAD83D;
+Reference = R3;
+ValeurCmp = 22;
+IdModule  = c_0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /53CAD86D;
+Reference = R4;
+ValeurCmp = 22;
+IdModule  = c_0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /53D3C2E5;
+Reference = R5;
+ValeurCmp = 1K;
+IdModule  = c_0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /53D3CAA7;
+Reference = R6;
+ValeurCmp = OPT;
+IdModule  = ML_R1-8W;
+EndCmp
+
+BeginCmp
+TimeStamp = /53D3CAAD;
+Reference = R7;
+ValeurCmp = OPT;
+IdModule  = ML_R1-8W;
+EndCmp
+
+BeginCmp
+TimeStamp = /53E923D1;
+Reference = R8;
+ValeurCmp = 1K;
+IdModule  = c_0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /53CAD536;
+Reference = S1;
+ValeurCmp = RESET;
+IdModule  = ML_Tactile-SMT;
+EndCmp
+
+BeginCmp
+TimeStamp = /53D3E8E0;
+Reference = SJ2;
+ValeurCmp = SOLDERJUMPERNO;
+IdModule  = SparkFun-SJ_2S-NO;
+EndCmp
+
+BeginCmp
+TimeStamp = /53D3E8E6;
+Reference = SJ3;
+ValeurCmp = SOLDERJUMPERNO;
+IdModule  = SparkFun-SJ_2S-NO;
+EndCmp
+
+BeginCmp
+TimeStamp = /53CAD514;
+Reference = U1;
+ValeurCmp = ATMEGA16U4/32U4;
+IdModule  = TQFP44;
+EndCmp
+
+BeginCmp
+TimeStamp = /53CADCBB;
+Reference = Y1;
+ValeurCmp = 16MHz;
+IdModule  = SparkFun-HC49UP;
+EndCmp
+
+EndListe

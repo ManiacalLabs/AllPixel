@@ -1,0 +1,69 @@
+EESchema-DOCLIB  Version 2.0  Date: dom 21 apr 2013 17:00:10 CEST
+#
+$CMP ARDUINO_HEADER
+D Arduino shield Header
+$ENDCMP
+#
+$CMP ARDUINO_MEGA_HEADER
+D Arduino Mega/2 shield Header
+$ENDCMP
+#
+$CMP ARDUINO_NANO_HEADER
+D Arduino Nano Rev3 shield Header
+$ENDCMP
+#
+$CMP DB-100
+K CONN
+$ENDCMP
+#
+$CMP DB-15
+K CONN
+$ENDCMP
+#
+$CMP DB-25
+K CONN
+$ENDCMP
+#
+$CMP DB-26
+K CONN
+$ENDCMP
+#
+$CMP DB-28
+K CONN
+$ENDCMP
+#
+$CMP DB-50
+K CONN
+$ENDCMP
+#
+$CMP DB-68
+K CONN
+$ENDCMP
+#
+$CMP DB-9
+K CONN
+$ENDCMP
+#
+$CMP Jack_3.5mm_3pin
+D 3.5mm jack, 3 pin
+$ENDCMP
+#
+$CMP JACK_3.5MM_4PIN
+D 3.5mm jack, 4 pin
+$ENDCMP
+#
+$CMP Jack_3.5mm_5pin
+D 3.5mm jack, 5 pin
+$ENDCMP
+#
+$CMP RJ45-WIZNET-RB1-125BAG1A
+D RJ45 connector, Wiznet rb1-125bag1a
+F /home/walter/Documenti/Elettronica/DATA_SHEET/Meccanici/Connettori/altro/WIZnet_RB1-125BAG1A.pdf
+$ENDCMP
+#
+$CMP USB-B
+D USB B-TYPE connector
+K USB
+$ENDCMP
+#
+#End Doc Library
