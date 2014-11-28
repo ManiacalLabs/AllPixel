@@ -45,7 +45,8 @@ inline void setupFastLED()
 		//Do setup here for bypassing normal chipset control
 		break;
 #endif
-		//SPI Based Chipsets
+
+//SPI Based Chipsets
 #ifdef LPD8806
 	case LPD8806:
 		pLed = new LPD8806Controller < SPI_DATA, SPI_CLOCK, RGB>();
@@ -61,8 +62,19 @@ inline void setupFastLED()
 		pLed = new SM16716Controller<SPI_DATA, SPI_CLOCK, RGB>();
 		break;
 #endif
+#ifdef APA102
+	case APA102:
+		pLed = new APA102Controller<SPI_DATA, SPI_CLOCK, RGB>();
+		break;
+#endif
+#ifdef P9813
+	case P9813:
+		pLed = new P9813Controller<SPI_DATA, SPI_CLOCK, RGB>();
+		break;
+#endif
+
+//One Wire Chipsets
 #ifdef NEOPIXEL
-		//One Wire Chipsets
 	case NEOPIXEL:
 		pLed = new WS2811Controller800Khz<ONEWIREPIN, RGB>();
 		break;
@@ -87,6 +99,12 @@ inline void setupFastLED()
 		pLed = new UCS1903Controller400Khz<ONEWIREPIN, RGB>();
 		break;
 #endif
+#ifdef LPD1886
+	case LPD1886:
+		pLed = new LPD1886Controller1250Khz<ONEWIREPIN, RGB>();
+		break;
+#endif
+
 	default:
 		//TODO: Some error condition should go here
 		break;
@@ -238,10 +256,18 @@ inline void getData()
 #ifdef SM16716
 				case SM16716:
 #endif
-#if defined(LPD8806) || defined(WS2801) || defined(NEOPIXEL) || defined(WS2811_400) || defined(TM1809_TM1804) || defined(TM1803) || defined(UCS1903) || defined(SM16716)
+#ifdef APA102
+				case APA102:
+#endif
+#ifdef LPD1886
+				case LPD1886:
+#endif
+#ifdef P9813
+				case P9813:
+#endif
+				case 255: //This is just so that this case remains valid but uncalled if all options are not defined
 					temp.pixelCount = temp.pixelCount / 3;
 					break;
-#endif
 				default:
 					result = RETURN_CODES::ERROR_UNSUPPORTED;
 					break;
@@ -275,6 +301,7 @@ inline void getData()
 			//Otherwise previous brightness values could 
 			//still be in memory.
 			FastLED.setBrightness(255);
+			FastLED.setDither(1);
 		}
 		else if (cmd == CMDTYPE::BRIGHTNESS)
 		{
@@ -305,4 +332,5 @@ inline void getData()
 void loop()
 {
 	getData();
+	FastLED.delay(0);
 }
