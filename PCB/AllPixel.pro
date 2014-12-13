@@ -1,5 +1,5 @@
-update=11/6/2014 9:19:31 PM
-last_client=eeschema
+update=12/7/2014 6:05:37 PM
+last_client=kicad
 [cvpcb]
 version=1
 NetIExt=net
@@ -51,8 +51,6 @@ LibName22=w_capacitors
 LibName23=w_pin_strip
 LibName24=w_to
 LibName25=DanCustom_Footprints
-[general]
-version=1
 [eeschema]
 version=1
 LibDir=libs
@@ -98,3 +96,5 @@ LibName33=open-project
 LibName34=PCA9685-TSSOP
 LibName35=SparkFun
 LibName36=w_connectors
+[general]
+version=1
