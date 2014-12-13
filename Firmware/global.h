@@ -50,7 +50,7 @@ namespace RETURN_CODES
 
 #define ONEWIREPIN 2
 
-#define FREE_RAM_BUFFER 200
+#define FREE_RAM_BUFFER 180
 
 
 //#define GENERIC 0

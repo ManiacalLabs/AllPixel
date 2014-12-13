@@ -106,7 +106,7 @@ inline void setupFastLED()
 #endif
 
 	default:
-		//TODO: Some error condition should go here
+		//Nothing happens. No chipset configured. Not exactly an error condition
 		break;
 	}
 
@@ -161,11 +161,13 @@ void setup()
 	setupFastLED();
 }
 
+#define EMPTYMAX 100
 inline void getData()
 {
 	static char cmd = 0;
 	static uint16_t size = 0;
 	static uint16_t count = 0;
+	static uint8_t emptyCount = 0;
 	static size_t c = 0;
 	static uint16_t packSize = numLEDs * bytesPerPixel;
 
@@ -185,13 +187,23 @@ inline void getData()
 		else if (cmd == CMDTYPE::PIXEL_DATA)
 		{
 			count = 0;
+			emptyCount = 0;
+
 			if (size == packSize)
 			{
 				while (count < packSize - 1)
 				{
-					//should limit the number of 0 responses allow so that it fails out eventually
 					c = Serial.readBytes(((char*)_fastLEDs) + count, packSize - count);
-					//if (c == 0) break;
+					if (c == 0) 
+					{
+						emptyCount++;
+						if(emptyCount > EMPTYMAX) break;
+					}
+					else
+					{
+						emptyCount = 0;
+					}
+
 					count += c;
 				}
 			}
