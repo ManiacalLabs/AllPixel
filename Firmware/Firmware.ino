@@ -218,6 +218,23 @@ inline void getData()
 
 			Serial.write(resp);
 		}
+		else if(cmd == CMDTYPE::GETID)
+		{
+			Serial.write(EEPROM.read(16));
+		}
+		else if(cmd == CMDTYPE::SETID)
+		{
+			if(size != 1)
+			{
+				Serial.write(RETURN_CODES::ERROR_SIZE);
+			}
+			else
+			{
+				uint8_t id = Serial.read();
+				EEPROM.write(16, id);
+				Serial.write(RETURN_CODES::SUCCESS);
+			}
+		}
 		else if (cmd == CMDTYPE::SETUP_DATA)
 		{
 			uint8_t result = RETURN_CODES::SUCCESS;
@@ -231,89 +248,91 @@ inline void getData()
 			{
 				size_t read = Serial.readBytes((char*)&temp, sizeof(config_t));
 				if (read != size)
-					result = RETURN_CODES::ERROR_SIZE;
-
-				//validate strip type and set pixelCount
-				switch (temp.type)
 				{
-#ifdef GENERIC
-				case GENERIC:
-					//update this to whatever your setup uses
-					temp.pixelCount = temp.pixelCount / 3;
-					break;
-#endif
-
-					//One of these NEEDS to be defined, otherwise comment out the whole block
-#ifdef LPD8806
-				case LPD8806:
-#endif
-#ifdef WS2801
-				case WS2801:
-#endif
-#ifdef NEOPIXEL
-				case NEOPIXEL:
-#endif
-#ifdef WS2811_400
-				case WS2811_400:
-#endif
-#ifdef TM1809_TM1804
-				case TM1809_TM1804:
-#endif
-#ifdef TM1803
-				case TM1803:
-#endif
-#ifdef UCS1903
-				case UCS1903:
-#endif
-#ifdef SM16716
-				case SM16716:
-#endif
-#ifdef APA102
-				case APA102:
-#endif
-#ifdef LPD1886
-				case LPD1886:
-#endif
-#ifdef P9813
-				case P9813:
-#endif
-				case 255: //This is just so that this case remains valid but uncalled if all options are not defined
-					temp.pixelCount = temp.pixelCount / 3;
-					break;
-				default:
-					result = RETURN_CODES::ERROR_UNSUPPORTED;
-					break;
+					result = RETURN_CODES::ERROR_SIZE;
 				}
+				else
+				{
+					//validate strip type and set pixelCount
+					switch (temp.type)
+					{
+				#ifdef GENERIC
+					case GENERIC:
+						//update this to whatever your setup uses
+						temp.pixelCount = temp.pixelCount / 3;
+						break;
+				#endif
 
-				if (temp.spiSpeed < 1 || temp.spiSpeed > 24)
-					result = RETURN_CODES::ERROR_UNSUPPORTED;
-#ifdef WS2801
-				if (temp.type == WS2801)
-					temp.spiSpeed = 1;
-#endif
+						//One of these NEEDS to be defined, otherwise comment out the whole block
+				#ifdef LPD8806
+					case LPD8806:
+				#endif
+				#ifdef WS2801
+					case WS2801:
+				#endif
+				#ifdef NEOPIXEL
+					case NEOPIXEL:
+				#endif
+				#ifdef WS2811_400
+					case WS2811_400:
+				#endif
+				#ifdef TM1809_TM1804
+					case TM1809_TM1804:
+				#endif
+				#ifdef TM1803
+					case TM1803:
+				#endif
+				#ifdef UCS1903
+					case UCS1903:
+				#endif
+				#ifdef SM16716
+					case SM16716:
+				#endif
+				#ifdef APA102
+					case APA102:
+				#endif
+				#ifdef LPD1886
+					case LPD1886:
+				#endif
+				#ifdef P9813
+					case P9813:
+				#endif
+					case 255: //This is just so that this case remains valid but uncalled if all options are not defined
+						temp.pixelCount = temp.pixelCount / 3;
+						break;
+					default:
+						result = RETURN_CODES::ERROR_UNSUPPORTED;
+						break;
+					}
+
+					if (temp.spiSpeed < 1 || temp.spiSpeed > 24)
+						result = RETURN_CODES::ERROR_UNSUPPORTED;
+				#ifdef WS2801
+					if (temp.type == WS2801)
+						temp.spiSpeed = 1;
+				#endif
+
+					if (result == RETURN_CODES::SUCCESS && memcmp(&temp, &config, sizeof(config_t)) != 0)
+					{
+						memcpy(&config, &temp, sizeof(config_t));
+
+						writeConfig(); //save changes for next reboot
+
+						Serial.write(RETURN_CODES::REBOOT); //send reboot needed
+						Serial.flush();
+						delay(100);
+						doReboot(); //Reboot and start over
+					}
+
+					//On config we reset the brightness.
+					//Otherwise previous brightness values could 
+					//still be in memory.
+					FastLED.setBrightness(255);
+					FastLED.setDither(1);
+				}
 			}
 
-			if (result == RETURN_CODES::SUCCESS && memcmp(&temp, &config, sizeof(config_t)) != 0)
-			{
-				memcpy(&config, &temp, sizeof(config_t));
-
-				writeConfig(); //save changes for next reboot
-
-				Serial.write(RETURN_CODES::REBOOT); //send reboot needed
-				Serial.flush();
-				delay(100);
-				doReboot(); //Reboot and start over
-			}
-			else
-			{
-				Serial.write(result);
-			}
-
-			//On config we reset the brightness.
-			//Otherwise previous brightness values could 
-			//still be in memory.
-			FastLED.setBrightness(255);
-			FastLED.setDither(1);
+			Serial.write(result);
 		}
 		else if (cmd == CMDTYPE::BRIGHTNESS)
 		{
@@ -334,6 +353,7 @@ inline void getData()
 
 			Serial.write(result);
 		}
+
 
 		Serial.flush();
 	}

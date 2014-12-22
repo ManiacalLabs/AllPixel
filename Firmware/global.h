@@ -32,6 +32,8 @@ namespace CMDTYPE
 		SETUP_DATA = 1,
 		PIXEL_DATA = 2,
 		BRIGHTNESS = 3,
+		GETID      = 4,
+		SETID      = 5,
 	};
 }
 
@@ -74,7 +76,7 @@ struct config_t
 	uint16_t pixelCount;
 	uint8_t spiSpeed;
 } config;
-#define CONFIGCHECK 6
+#define CONFIGCHECK 7
 
 
 void writeConfig()
@@ -93,6 +95,7 @@ void writeDefaultConfig()
 	config.pixelCount = 1;
 	config.spiSpeed = 16;
 	writeConfig();
+	EEPROM.write(16, 0);
 }
 
 uint32_t freeRam()
