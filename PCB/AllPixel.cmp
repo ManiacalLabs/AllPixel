@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = 10/5/2014 10:48:38 AM
+Cmp-Mod V01 Created by PcbNew date = 1/1/2015 7:40:25 PM
 
 BeginCmp
 TimeStamp = /53CADD1C;
@@ -39,7 +39,7 @@ BeginCmp
 TimeStamp = /53CAD527;
 Reference = CON1;
 ValeurCmp = ML_USB_MINI;
-IdModule  = ML_USB_MINI;
+IdModule  = ML_USB_MINI_posts;
 EndCmp
 
 BeginCmp
@@ -60,7 +60,7 @@ BeginCmp
 TimeStamp = /53E92290;
 Reference = D2;
 ValeurCmp = DIODE;
-IdModule  = D3;
+IdModule  = ML_Diode_largerholes;
 EndCmp
 
 BeginCmp
