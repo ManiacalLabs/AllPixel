@@ -59,7 +59,7 @@
     (pad_drill 1)
     (pad_to_mask_clearance 0)
     (aux_axis_origin 0 0)
-    (visible_elements 7FFFFF3F)
+    (visible_elements 7FFFFB3F)
     (pcbplotparams
       (layerselection 283148289)
       (usegerberextensions true)
@@ -151,12 +151,12 @@
     (uvia_drill 0.127)
   )
 
-  (module ML_SparkFun-1X04_LOCK_SCREW (layer F.Cu) (tedit 53D506EC) (tstamp 53E215C3)
+  (module ML_SparkFun-1X04_LOCK_SCREW (layer F.Cu) (tedit 54A7FE8E) (tstamp 53E215C3)
     (at 77.8 36 270)
     (path /53CAE238)
     (attr virtual)
-    (fp_text reference JP2 (at 1.8288 -2.4638 270) (layer F.SilkS) hide
-      (effects (font (size 1.27 1.27) (thickness 0.0889)))
+    (fp_text reference JP2 (at 6 0 360) (layer F.SilkS)
+      (effects (font (size 0.5 0.5) (thickness 0.06096)))
     )
     (fp_text value OUTPUT (at 0 2.5 270) (layer F.SilkS)
       (effects (font (size 1.27 1.27) (thickness 0.2032)))
@@ -537,13 +537,13 @@
     )
   )
 
-  (module ML_BARREL_JACK_ROUND_PADS_SHORT (layer F.Cu) (tedit 53D503A9) (tstamp 53D4F7E0)
+  (module ML_BARREL_JACK_ROUND_PADS_SHORT (layer F.Cu) (tedit 54A7FE39) (tstamp 53D4F7E0)
     (at 73.5 21.5 270)
     (descr "DC Barrel Jack")
     (tags "Power Jack")
     (path /53D3C759)
-    (fp_text reference CON2 (at 10.09904 0 360) (layer F.SilkS) hide
-      (effects (font (size 1.016 1.016) (thickness 0.2032)))
+    (fp_text reference CON2 (at 7.7 -3.7 360) (layer F.SilkS)
+      (effects (font (size 0.5 0.5) (thickness 0.06096)))
     )
     (fp_text value BARREL_JACK (at 0 -5.99948 270) (layer F.SilkS) hide
       (effects (font (size 1.016 1.016) (thickness 0.2032)))
