@@ -14,7 +14,7 @@
 
   (page A3)
   (layers
-    (15 F.Cu signal)
+    (15 F.Cu signal hide)
     (0 B.Cu signal hide)
     (16 B.Adhes user)
     (17 F.Adhes user)
@@ -795,11 +795,11 @@
     )
   )
 
-  (module ML_c_0805 (layer F.Cu) (tedit 54A8C6C5) (tstamp 53E215E9)
+  (module ML_c_0805 (layer F.Cu) (tedit 54A93E31) (tstamp 53E215E9)
     (at 31 24.5)
     (descr "SMT capacitor, 0805")
     (path /53CAD83D)
-    (fp_text reference R3 (at 0 -0.9906) (layer F.SilkS)
+    (fp_text reference R3 (at 0 -1.1) (layer F.SilkS)
       (effects (font (size 0.5 0.5) (thickness 0.06096)))
     )
     (fp_text value 22 (at 0 0.9906) (layer F.SilkS) hide
@@ -822,11 +822,11 @@
     )
   )
 
-  (module ML_c_0805 (layer F.Cu) (tedit 54A8C6C5) (tstamp 53E21625)
+  (module ML_c_0805 (layer F.Cu) (tedit 54A93E2C) (tstamp 53E21625)
     (at 31 27)
     (descr "SMT capacitor, 0805")
     (path /53CAD86D)
-    (fp_text reference R4 (at 0 -0.9906) (layer F.SilkS)
+    (fp_text reference R4 (at 0 -1.1) (layer F.SilkS)
       (effects (font (size 0.5 0.5) (thickness 0.06096)))
     )
     (fp_text value 22 (at 0 0.9906) (layer F.SilkS) hide
@@ -849,11 +849,11 @@
     )
   )
 
-  (module ML_c_0805 (layer F.Cu) (tedit 54A8C6C5) (tstamp 53E21607)
+  (module ML_c_0805 (layer F.Cu) (tedit 54A93E28) (tstamp 53E21607)
     (at 31 29.5)
     (descr "SMT capacitor, 0805")
     (path /53D3C2E5)
-    (fp_text reference R5 (at 0 -0.9906) (layer F.SilkS)
+    (fp_text reference R5 (at 0 -1.1) (layer F.SilkS)
       (effects (font (size 0.5 0.5) (thickness 0.06096)))
     )
     (fp_text value 1K (at 0 0.9906) (layer F.SilkS) hide
@@ -876,11 +876,11 @@
     )
   )
 
-  (module ML_c_0805 (layer F.Cu) (tedit 54A8C6C5) (tstamp 53F255EF)
+  (module ML_c_0805 (layer F.Cu) (tedit 54A93E3A) (tstamp 53F255EF)
     (at 42.1 25.6)
     (descr "SMT capacitor, 0805")
     (path /53CADE11)
-    (fp_text reference R2 (at 0 -0.9906) (layer F.SilkS)
+    (fp_text reference R2 (at 0 -1.1) (layer F.SilkS)
       (effects (font (size 0.5 0.5) (thickness 0.06096)))
     )
     (fp_text value 10k (at 0 0.9906) (layer F.SilkS) hide
@@ -903,11 +903,11 @@
     )
   )
 
-  (module ML_c_0805 (layer F.Cu) (tedit 54A8C6C5) (tstamp 53F251F8)
+  (module ML_c_0805 (layer F.Cu) (tedit 54A93E3D) (tstamp 53F251F8)
     (at 42.1 28.1)
     (descr "SMT capacitor, 0805")
     (path /53E923D1)
-    (fp_text reference R8 (at 0 -0.9906) (layer F.SilkS)
+    (fp_text reference R8 (at 0 -1.1) (layer F.SilkS)
       (effects (font (size 0.5 0.5) (thickness 0.06096)))
     )
     (fp_text value 1K (at 0 0.9906) (layer F.SilkS) hide
@@ -930,11 +930,11 @@
     )
   )
 
-  (module ML_c_1206 (layer F.Cu) (tedit 54A8C689) (tstamp 53F252AB)
+  (module ML_c_1206 (layer F.Cu) (tedit 54A93DE7) (tstamp 53F252AB)
     (at 58.5 32.8 90)
     (descr "SMT capacitor, 1206")
     (path /53CADB50)
-    (fp_text reference C4 (at 0.0254 -1.2954 90) (layer F.SilkS)
+    (fp_text reference C4 (at 2.8 0 180) (layer F.SilkS)
       (effects (font (size 0.5 0.5) (thickness 0.06096)))
     )
     (fp_text value 1uF (at 0 1.27 90) (layer F.SilkS) hide
@@ -957,11 +957,11 @@
     )
   )
 
-  (module ML_c_1206 (layer F.Cu) (tedit 54A8C689) (tstamp 53E21692)
+  (module ML_c_1206 (layer F.Cu) (tedit 54A93DF8) (tstamp 53E21692)
     (at 58.5 38.8 270)
     (descr "SMT capacitor, 1206")
     (path /53CAD8AA)
-    (fp_text reference C3 (at 0.0254 -1.2954 270) (layer F.SilkS)
+    (fp_text reference C3 (at 2.9 0 360) (layer F.SilkS)
       (effects (font (size 0.5 0.5) (thickness 0.06096)))
     )
     (fp_text value 1uF (at 0 1.27 270) (layer F.SilkS) hide
@@ -984,11 +984,11 @@
     )
   )
 
-  (module ML_c_0805 (layer F.Cu) (tedit 54A8C6C5) (tstamp 53E215FD)
+  (module ML_c_0805 (layer F.Cu) (tedit 54A93E19) (tstamp 53E215FD)
     (at 31.6 41.2 180)
     (descr "SMT capacitor, 0805")
     (path /53CADE23)
-    (fp_text reference R1 (at 0 -0.9906 180) (layer F.SilkS)
+    (fp_text reference R1 (at 0 1.2 180) (layer F.SilkS)
       (effects (font (size 0.5 0.5) (thickness 0.06096)))
     )
     (fp_text value 1K (at 0 0.9906 180) (layer F.SilkS) hide
@@ -1063,11 +1063,11 @@
     )
   )
 
-  (module ML_R1-8W (layer F.Cu) (tedit 54A8C793) (tstamp 53F25382)
+  (module ML_R1-8W (layer F.Cu) (tedit 54A93DB2) (tstamp 53F25382)
     (at 62.6 39.5 315)
     (descr http://www.mouser.com/ProductDetail/Xicon/299-330-RC/?qs=sGAEpiMZZMu61qfTUdNhG1aMK7XKB77EKzTqu4lEvbw%3d)
     (path /53D3CAAD)
-    (fp_text reference R7 (at -0.091924 -1.774838 315) (layer F.SilkS)
+    (fp_text reference R7 (at 0.070711 1.909188 315) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_text value OPT (at 0 0 315) (layer F.SilkS) hide
@@ -1120,11 +1120,11 @@
     )
   )
 
-  (module ML_SparkFun-0603-CAP (layer F.Cu) (tedit 54A8C83B) (tstamp 53E2167C)
+  (module ML_SparkFun-0603-CAP (layer F.Cu) (tedit 54A93E47) (tstamp 53E2167C)
     (at 41.5 38.8 270)
     (path /53CADD1C)
     (attr smd)
-    (fp_text reference C1 (at 1.8 0 360) (layer F.SilkS)
+    (fp_text reference C1 (at 1.9 0 360) (layer F.SilkS)
       (effects (font (size 0.5 0.5) (thickness 0.06096)))
     )
     (fp_text value 22pF (at 0.2032 0.9398 270) (layer F.SilkS) hide
@@ -1296,13 +1296,13 @@
     )
   )
 
-  (module ML_LED-1206 (layer F.Cu) (tedit 54A8CAC2) (tstamp 53E2163E)
+  (module ML_LED-1206 (layer F.Cu) (tedit 54A93E0F) (tstamp 53E2163E)
     (at 29.7 32.9 180)
     (descr "LED 1206 smd package")
     (tags "LED1206 SMD")
     (path /53D3C2D8)
     (attr smd)
-    (fp_text reference D1 (at 0 1.2 180) (layer F.SilkS)
+    (fp_text reference D1 (at 0 1.3 180) (layer F.SilkS)
       (effects (font (size 0.5 0.5) (thickness 0.06096)))
     )
     (fp_text value LED (at 0 1.524 180) (layer F.SilkS) hide
