@@ -45,7 +45,8 @@ inline void setupFastLED()
 		//Do setup here for bypassing normal chipset control
 		break;
 #endif
-		//SPI Based Chipsets
+
+//SPI Based Chipsets
 #ifdef LPD8806
 	case LPD8806:
 		pLed = new LPD8806Controller < SPI_DATA, SPI_CLOCK, RGB>();
@@ -61,8 +62,19 @@ inline void setupFastLED()
 		pLed = new SM16716Controller<SPI_DATA, SPI_CLOCK, RGB>();
 		break;
 #endif
+#ifdef APA102
+	case APA102:
+		pLed = new APA102Controller<SPI_DATA, SPI_CLOCK, RGB>();
+		break;
+#endif
+#ifdef P9813
+	case P9813:
+		pLed = new P9813Controller<SPI_DATA, SPI_CLOCK, RGB>();
+		break;
+#endif
+
+//One Wire Chipsets
 #ifdef NEOPIXEL
-		//One Wire Chipsets
 	case NEOPIXEL:
 		pLed = new WS2811Controller800Khz<ONEWIREPIN, RGB>();
 		break;
@@ -87,8 +99,14 @@ inline void setupFastLED()
 		pLed = new UCS1903Controller400Khz<ONEWIREPIN, RGB>();
 		break;
 #endif
+#ifdef LPD1886
+	case LPD1886:
+		pLed = new LPD1886Controller1250Khz<ONEWIREPIN, RGB>();
+		break;
+#endif
+
 	default:
-		//TODO: Some error condition should go here
+		//Nothing happens. No chipset configured. Not exactly an error condition
 		break;
 	}
 
@@ -143,11 +161,13 @@ void setup()
 	setupFastLED();
 }
 
+#define EMPTYMAX 100
 inline void getData()
 {
 	static char cmd = 0;
 	static uint16_t size = 0;
 	static uint16_t count = 0;
+	static uint8_t emptyCount = 0;
 	static size_t c = 0;
 	static uint16_t packSize = numLEDs * bytesPerPixel;
 
@@ -167,13 +187,23 @@ inline void getData()
 		else if (cmd == CMDTYPE::PIXEL_DATA)
 		{
 			count = 0;
+			emptyCount = 0;
+
 			if (size == packSize)
 			{
 				while (count < packSize - 1)
 				{
-					//should limit the number of 0 responses allow so that it fails out eventually
 					c = Serial.readBytes(((char*)_fastLEDs) + count, packSize - count);
-					//if (c == 0) break;
+					if (c == 0) 
+					{
+						emptyCount++;
+						if(emptyCount > EMPTYMAX) break;
+					}
+					else
+					{
+						emptyCount = 0;
+					}
+
 					count += c;
 				}
 			}
@@ -188,6 +218,23 @@ inline void getData()
 
 			Serial.write(resp);
 		}
+		else if(cmd == CMDTYPE::GETID)
+		{
+			Serial.write(EEPROM.read(16));
+		}
+		else if(cmd == CMDTYPE::SETID)
+		{
+			if(size != 1)
+			{
+				Serial.write(RETURN_CODES::ERROR_SIZE);
+			}
+			else
+			{
+				uint8_t id = Serial.read();
+				EEPROM.write(16, id);
+				Serial.write(RETURN_CODES::SUCCESS);
+			}
+		}
 		else if (cmd == CMDTYPE::SETUP_DATA)
 		{
 			uint8_t result = RETURN_CODES::SUCCESS;
@@ -201,80 +248,91 @@ inline void getData()
 			{
 				size_t read = Serial.readBytes((char*)&temp, sizeof(config_t));
 				if (read != size)
-					result = RETURN_CODES::ERROR_SIZE;
-
-				//validate strip type and set pixelCount
-				switch (temp.type)
 				{
-#ifdef GENERIC
-				case GENERIC:
-					//update this to whatever your setup uses
-					temp.pixelCount = temp.pixelCount / 3;
-					break;
-#endif
-
-					//One of these NEEDS to be defined, otherwise comment out the whole block
-#ifdef LPD8806
-				case LPD8806:
-#endif
-#ifdef WS2801
-				case WS2801:
-#endif
-#ifdef NEOPIXEL
-				case NEOPIXEL:
-#endif
-#ifdef WS2811_400
-				case WS2811_400:
-#endif
-#ifdef TM1809_TM1804
-				case TM1809_TM1804:
-#endif
-#ifdef TM1803
-				case TM1803:
-#endif
-#ifdef UCS1903
-				case UCS1903:
-#endif
-#ifdef SM16716
-				case SM16716:
-#endif
-#if defined(LPD8806) || defined(WS2801) || defined(NEOPIXEL) || defined(WS2811_400) || defined(TM1809_TM1804) || defined(TM1803) || defined(UCS1903) || defined(SM16716)
-					temp.pixelCount = temp.pixelCount / 3;
-					break;
-#endif
-				default:
-					result = RETURN_CODES::ERROR_UNSUPPORTED;
-					break;
+					result = RETURN_CODES::ERROR_SIZE;
 				}
+				else
+				{
+					//validate strip type and set pixelCount
+					switch (temp.type)
+					{
+				#ifdef GENERIC
+					case GENERIC:
+						//update this to whatever your setup uses
+						temp.pixelCount = temp.pixelCount / 3;
+						break;
+				#endif
 
-				if (temp.spiSpeed < 1 || temp.spiSpeed > 24)
-					result = RETURN_CODES::ERROR_UNSUPPORTED;
-#ifdef WS2801
-				if (temp.type == WS2801)
-					temp.spiSpeed = 1;
-#endif
+						//One of these NEEDS to be defined, otherwise comment out the whole block
+				#ifdef LPD8806
+					case LPD8806:
+				#endif
+				#ifdef WS2801
+					case WS2801:
+				#endif
+				#ifdef NEOPIXEL
+					case NEOPIXEL:
+				#endif
+				#ifdef WS2811_400
+					case WS2811_400:
+				#endif
+				#ifdef TM1809_TM1804
+					case TM1809_TM1804:
+				#endif
+				#ifdef TM1803
+					case TM1803:
+				#endif
+				#ifdef UCS1903
+					case UCS1903:
+				#endif
+				#ifdef SM16716
+					case SM16716:
+				#endif
+				#ifdef APA102
+					case APA102:
+				#endif
+				#ifdef LPD1886
+					case LPD1886:
+				#endif
+				#ifdef P9813
+					case P9813:
+				#endif
+					case 255: //This is just so that this case remains valid but uncalled if all options are not defined
+						temp.pixelCount = temp.pixelCount / 3;
+						break;
+					default:
+						result = RETURN_CODES::ERROR_UNSUPPORTED;
+						break;
+					}
+
+					if (temp.spiSpeed < 1 || temp.spiSpeed > 24)
+						result = RETURN_CODES::ERROR_UNSUPPORTED;
+				#ifdef WS2801
+					if (temp.type == WS2801)
+						temp.spiSpeed = 1;
+				#endif
+
+					if (result == RETURN_CODES::SUCCESS && memcmp(&temp, &config, sizeof(config_t)) != 0)
+					{
+						memcpy(&config, &temp, sizeof(config_t));
+
+						writeConfig(); //save changes for next reboot
+
+						Serial.write(RETURN_CODES::REBOOT); //send reboot needed
+						Serial.flush();
+						delay(100);
+						doReboot(); //Reboot and start over
+					}
+
+					//On config we reset the brightness.
+					//Otherwise previous brightness values could 
+					//still be in memory.
+					FastLED.setBrightness(255);
+					FastLED.setDither(1);
+				}
 			}
 
-			if (result == RETURN_CODES::SUCCESS && memcmp(&temp, &config, sizeof(config_t)) != 0)
-			{
-				memcpy(&config, &temp, sizeof(config_t));
-
-				writeConfig(); //save changes for next reboot
-
-				Serial.write(RETURN_CODES::REBOOT); //send reboot needed
-				Serial.flush();
-				delay(100);
-				doReboot(); //Reboot and start over
-			}
-			else
-			{
-				Serial.write(result);
-			}
-
-			//On config we reset the brightness.
-			//Otherwise previous brightness values could 
-			//still be in memory.
-			FastLED.setBrightness(255);
+			Serial.write(result);
 		}
 		else if (cmd == CMDTYPE::BRIGHTNESS)
 		{
@@ -296,6 +354,7 @@ inline void getData()
 			Serial.write(result);
 		}
 
+
 		Serial.flush();
 	}
 
@@ -305,4 +364,5 @@ inline void getData()
 void loop()
 {
 	getData();
+	FastLED.delay(0);
 }

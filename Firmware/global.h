@@ -32,6 +32,8 @@ namespace CMDTYPE
 		SETUP_DATA = 1,
 		PIXEL_DATA = 2,
 		BRIGHTNESS = 3,
+		GETID      = 4,
+		SETID      = 5,
 	};
 }
 
@@ -50,13 +52,13 @@ namespace RETURN_CODES
 
 #define ONEWIREPIN 2
 
-#define FREE_RAM_BUFFER 200
+#define FREE_RAM_BUFFER 180
 
 
 //#define GENERIC 0
 #define LPD8806 1
 #define WS2801 2
-//NEOPIXEL also known as WS2811, WS2812, WS2812B
+//NEOPIXEL also known as WS2811, WS2812, WS2812B, APA104
 #define NEOPIXEL 3
 //400khz variant of above
 #define WS2811_400 4
@@ -64,6 +66,9 @@ namespace RETURN_CODES
 #define TM1803 6
 #define UCS1903 7
 #define SM16716 8
+#define APA102 9
+#define LPD1886 10 
+#define P9813 11 
 
 struct config_t
 {
@@ -71,7 +76,7 @@ struct config_t
 	uint16_t pixelCount;
 	uint8_t spiSpeed;
 } config;
-#define CONFIGCHECK 6
+#define CONFIGCHECK 7
 
 
 void writeConfig()
@@ -90,6 +95,7 @@ void writeDefaultConfig()
 	config.pixelCount = 1;
 	config.spiSpeed = 16;
 	writeConfig();
+	EEPROM.write(16, 0);
 }
 
 uint32_t freeRam()
