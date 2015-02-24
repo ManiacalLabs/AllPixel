@@ -1,0 +1,57 @@
+; Windows INF to load usbser driver for all CDC-ACM USB Serial Ports
+; Copyright (C) 2014 Maniacal Labs, LLC.
+
+[Version] 
+Signature="$Windows NT$" 
+Class=Ports
+ClassGuid={4D36E978-E325-11CE-BFC1-08002BE10318} 
+Provider=%MFGNAME% 
+DriverVer=12/12/2013,1.0.0.0
+CatalogFile=cdcacm.cat
+
+[Manufacturer] 
+%MFGNAME%=DeviceList, NTamd64
+
+[DeviceList]
+%DEVNAME%=DriverInstall,USB\Class_02&SubClass_02&Prot_01
+
+[DeviceList.NTamd64]
+%DEVNAME%=DriverInstall,USB\Class_02&SubClass_02&Prot_01
+
+[DestinationDirs] 
+DefaultDestDir=12 
+DriverCopyFiles=12
+
+[DriverInstall]
+Include=mdmcpq.inf
+Include=msports.inf
+CopyFiles=FakeModemCopyFileSection,SerialEnumerator.NT.Copy
+AddReg=DriverAddReg
+
+[DriverAddReg]
+HKR,,EnumPropPages32,,"msports.dll,SerialPortPropPageProvider"
+HKR,,"LowerFilters",0x00010000,"usbser"
+HKR,,"UpperFilters",0x00010000,"serenum"
+
+[DriverInstall.Services]
+Include=mdmcpq.inf
+AddService=usbser,0x00000002,UsbserService
+AddService=serenum,,SerenumService
+
+[UsbserService]
+ServiceType= 1
+StartType  = 3
+ErrorControl = 0
+ServiceBinary = %12%\usbser.sys
+
+[SerenumService] 
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 0
+ServiceBinary  = %12%\serenum.sys
+LoadOrderGroup = PNP Filter
+
+[Strings] 
+MFGNAME="Generic"
+DEVNAME="AVR USB Serial"
+
