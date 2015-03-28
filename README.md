@@ -3,6 +3,10 @@ AllPixel
 
 Firmware and Board Designs for the AllPixel LED Controller Board
 
-See more project details on [KickStarter](http://maniacallabs.com/AllPixel)
+Be sure to check out the [AllPixel Quick Start Guide](https://github.com/ManiacalLabs/AllPixel/wiki)
 
-For best results, use our [ATUSB Arduino Core](https://github.com/ManiacalLabs/ATUSB_Core)
+The AllPixel is fully supported by the [BiblioPixel](https://github.com/ManiacalLabs/BiblioPixel) Python library
+
+Check out our site for more details [AllPixel at Maniacal Labs](http://maniacallabs.com/AllPixel)
+
+The AllPixel makes use of our [ATUSB Arduino Core](https://github.com/ManiacalLabs/ATUSB_Core)
