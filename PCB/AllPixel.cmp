@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by PcbNew date = 1/4/2015 12:08:57 AM
+Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = 4/7/2015 11:43:57 PM
 
 BeginCmp
 TimeStamp = /53CADD1C;
@@ -46,7 +46,7 @@ BeginCmp
 TimeStamp = /53D3C759;
 Reference = CON2;
 ValeurCmp = BARREL_JACK;
-IdModule  = ML_BARREL_JACK_ROUND_PADS_SHORT;
+IdModule  = ML_BARREL_JACK_ROUND_PADS_SHORT_3_5mmHoles;
 EndCmp
 
 BeginCmp
@@ -151,7 +151,7 @@ BeginCmp
 TimeStamp = /53CAD536;
 Reference = S1;
 ValeurCmp = RESET;
-IdModule  = ML_Tactile-SMT;
+IdModule  = ML_Tactile-SMT_5.5;
 EndCmp
 
 BeginCmp
