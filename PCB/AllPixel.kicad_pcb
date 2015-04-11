@@ -5,7 +5,7 @@
     (no_connects 0)
     (area 11.885512 12.650002 94.499998 43.829)
     (thickness 1.6)
-    (drawings 12)
+    (drawings 13)
     (tracks 233)
     (zones 0)
     (modules 28)
@@ -15,7 +15,7 @@
   (page A3)
   (layers
     (15 F.Cu signal)
-    (0 B.Cu signal)
+    (0 B.Cu signal hide)
     (16 B.Adhes user)
     (17 F.Adhes user)
     (18 B.Paste user)
@@ -1334,6 +1334,9 @@
     )
   )
 
+  (gr_text "Rev. B" (at 17.5 41.25) (layer F.SilkS)
+    (effects (font (size 1 1) (thickness 0.2)))
+  )
   (dimension 24.5 (width 0.3) (layer Eco2.User)
     (gr_text "24.500 mm" (at 87.849998 30.75 270) (layer Eco2.User)
       (effects (font (size 1.5 1.5) (thickness 0.3)))
