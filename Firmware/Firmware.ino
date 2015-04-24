@@ -1,9 +1,10 @@
-#include "FastLED.h"
+#include <FastLED.h>
 #include <EEPROM.h>
 #include "global.h"
 //#include "SPI.h"
 
 CRGB * _fastLEDs;
+
 
 uint16_t numLEDs = 1;
 CLEDController * pLed = NULL;
@@ -117,6 +118,7 @@ inline void setupFastLED()
 
 	setSPIRate(config.spiSpeed);
 
+    //FastLED.setDither(DISABLE_DITHER);
 	FastLED.clear();
 	FastLED.show();
 }
