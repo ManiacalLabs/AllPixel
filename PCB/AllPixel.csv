@@ -1,7 +1,4 @@
 Designator,Seed Package,Quantity,Value,Seeed SKU,
-JP2,,1,OUTPUT,,
-C5,,1,CP1,,
-JP1,,1,AVR_ISP,,
 Q1,SOT-23,1,NPN,0400000P1 ,http://www.seeedstudio.com/depot/index.php?main_page=opl_info&opl_id=41
 U1,QFN 44,1,ATMEGA16U4/32U4,310010016,http://www.seeedstudio.com/depot/index.php?main_page=opl_info&opl_id=478
 F1,1206,1,500mA,0900030P1 ,http://www.seeedstudio.com/depot/index.php?main_page=opl_info&opl_id=71
@@ -15,5 +12,3 @@ D2,SOD-123,1,DIODE,304020028,http://www.seeedstudio.com/depot/index.php?main_pag
 Y1,2P-SMD-5.0X3.2 ,1,16MHz,0500290P1,http://www.seeedstudio.com/depot/index.php?main_page=opl_info&opl_id=54
 D1,0603,1,LED,0330010P1 ,http://www.seeedstudio.com/depot/index.php?main_page=opl_info&opl_id=6
 CON1,,1,USB Micro,320010012,http://www.seeedstudio.com/depot/index.php?main_page=opl_info&opl_id=339
-S1,,1,RESET,,
-CON2,,1,BARREL_JACK,,
