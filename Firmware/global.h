@@ -1,5 +1,7 @@
 #include <EEPROM.h>
 
+#define FIRMWARE_VER 2
+
 template <class T> int EEPROM_writeAnything(int ee, const T& value)
 {
 	const byte* p = (const byte*)(const void*)&value;
@@ -34,6 +36,7 @@ namespace CMDTYPE
 		BRIGHTNESS = 3,
 		GETID      = 4,
 		SETID      = 5,
+		GETVER	   = 6
 	};
 }
 
@@ -47,6 +50,7 @@ namespace RETURN_CODES
 		ERROR_SIZE = 1,
 		ERROR_UNSUPPORTED = 2,
 		ERROR_PIXEL_COUNT = 3,
+		ERROR_BAD_CMD = 4,
 	};
 }
 
@@ -95,7 +99,6 @@ void writeDefaultConfig()
 	config.pixelCount = 1;
 	config.spiSpeed = 16;
 	writeConfig();
-	EEPROM.write(16, 0);
 }
 
 uint32_t freeRam()

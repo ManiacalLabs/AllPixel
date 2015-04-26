@@ -155,6 +155,7 @@ void setup()
 	{
 		EEPROM.write(0, CONFIGCHECK);
 		writeDefaultConfig();
+		EEPROM.write(16, 0);
 	}
 
 	readConfig();
@@ -354,6 +355,15 @@ inline void getData()
 			}
 
 			Serial.write(result);
+		}
+		else if (cmd == CMDTYPE::GETVER)
+		{
+			Serial.write(RETURN_CODES::SUCCESS);
+			Serial.write(FIRMWARE_VER);
+		}
+		else
+		{
+			Serial.write(RETURN_CODES::ERROR_BAD_CMD);
 		}
 
 
