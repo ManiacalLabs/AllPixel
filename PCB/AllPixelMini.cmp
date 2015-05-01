@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by PcbNew date = 4/25/2015 12:47:42 AM
+Cmp-Mod V01 Created by PcbNew date = 4/30/2015 9:13:15 PM
 
 BeginCmp
 TimeStamp = /53CADD1C;
@@ -32,7 +32,7 @@ BeginCmp
 TimeStamp = /553B1ABE;
 Reference = C5;
 ValeurCmp = CP1;
-IdModule  = CP_10x12.5mm;
+IdModule  = CP_10x12.5mm_Half;
 EndCmp
 
 BeginCmp
@@ -40,13 +40,6 @@ TimeStamp = /53CAD527;
 Reference = CON1;
 ValeurCmp = ML_USB_MINI;
 IdModule  = USB-5+2P-SMD-L7.4XW5.6XH2.6MM;
-EndCmp
-
-BeginCmp
-TimeStamp = /553B1AAF;
-Reference = CON2;
-ValeurCmp = BARREL_JACK;
-IdModule  = ML_BARREL_JACK_ROUND_PADS_SHORT_3_5mmHoles;
 EndCmp
 
 BeginCmp
@@ -73,22 +66,29 @@ EndCmp
 BeginCmp
 TimeStamp = /553B1ACF;
 Reference = JP1;
-ValeurCmp = OUTPUT2;
-IdModule  = 4-Pin-Lock;
+ValeurCmp = PT_OUTPUT;
+IdModule  = ML_SparkFun-1X04_LOCK_SCREW;
 EndCmp
 
 BeginCmp
 TimeStamp = /53CAE238;
 Reference = JP2;
 ValeurCmp = OUTPUT;
-IdModule  = 4-Pin-Lock;
+IdModule  = ML_SparkFun-1X04_LOCK_SCREW;
+EndCmp
+
+BeginCmp
+TimeStamp = /5542B3DA;
+Reference = JP3;
+ValeurCmp = PT_INPUT;
+IdModule  = ML_SparkFun-1X04_LOCK_SCREW;
 EndCmp
 
 BeginCmp
 TimeStamp = /553A8AC0;
 Reference = P1;
 ValeurCmp = CONN_1;
-IdModule  = 1PIN_SMD;
+IdModule  = 1PIN_S_SMD;
 EndCmp
 
 BeginCmp
@@ -96,6 +96,13 @@ TimeStamp = /553A8ACD;
 Reference = P2;
 ValeurCmp = CONN_1;
 IdModule  = 1PIN_S_SMD;
+EndCmp
+
+BeginCmp
+TimeStamp = /5542B430;
+Reference = P3;
+ValeurCmp = CONN_2;
+IdModule  = 2P-3.5;
 EndCmp
 
 BeginCmp

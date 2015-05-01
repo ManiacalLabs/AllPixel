@@ -35,13 +35,14 @@ LIBS:open-project
 LIBS:PCA9685-TSSOP
 LIBS:SparkFun
 LIBS:w_connectors
+LIBS:AllPixelMini-cache
 EELAYER 27 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
 Title ""
-Date "24 apr 2015"
+Date "30 apr 2015"
 Rev ""
 Comp ""
 Comment1 ""
@@ -534,4 +535,104 @@ Wire Wire Line
 	6550 2900 6650 2900
 Wire Wire Line
 	1600 1700 1700 1700
+$Comp
+L CP1 C5
+U 1 1 553B1ABE
+P 6350 4950
+F 0 "C5" H 6400 5050 50  0000 L CNN
+F 1 "CP1" H 6400 4850 50  0000 L CNN
+F 2 "~" H 6350 4950 60  0000 C CNN
+F 3 "~" H 6350 4950 60  0000 C CNN
+	1    6350 4950
+	-1   0    0    1   
+$EndComp
+$Comp
+L M04LOCK JP1
+U 1 1 553B1ACF
+P 8150 4200
+F 0 "JP1" H 7950 4530 50  0000 L BNN
+F 1 "PT_OUTPUT" H 7950 3900 50  0000 L BNN
+F 2 "SparkFun-1X04_LOCK" H 8150 4350 50  0001 C CNN
+F 3 "" H 8150 4200 60  0000 C CNN
+	1    8150 4200
+	-1   0    0    1   
+$EndComp
+Text GLabel 6750 4850 0    30   Input ~ 0
+GND
+Text GLabel 6750 5050 0    30   Input ~ 0
+VJACK
+Wire Wire Line
+	6800 4750 6350 4750
+Wire Wire Line
+	6800 5150 6350 5150
+Text GLabel 6500 3500 1    30   Input ~ 0
+DATA
+Text GLabel 6500 3750 3    30   Input ~ 0
+CLK
+Wire Wire Line
+	6500 3500 6500 3600
+Wire Wire Line
+	6500 3750 6500 3700
+Text GLabel 7900 4200 0    30   Input ~ 0
+DATA
+Text GLabel 7900 4300 0    30   Input ~ 0
+CLK
+Text GLabel 7900 4100 0    30   Input ~ 0
+VJACK
+Text GLabel 7900 4400 0    30   Input ~ 0
+GND
+Wire Wire Line
+	7900 4100 7950 4100
+Wire Wire Line
+	7950 4200 7900 4200
+Wire Wire Line
+	7900 4300 7950 4300
+Wire Wire Line
+	7950 4400 7900 4400
+$Comp
+L M04LOCK JP3
+U 1 1 5542B3DA
+P 8200 4950
+F 0 "JP3" H 8000 5280 50  0000 L BNN
+F 1 "PT_INPUT" H 8000 4650 50  0000 L BNN
+F 2 "SparkFun-1X04_LOCK" H 8200 5100 50  0001 C CNN
+F 3 "" H 8200 4950 60  0000 C CNN
+	1    8200 4950
+	-1   0    0    1   
+$EndComp
+Text GLabel 7950 4950 0    30   Input ~ 0
+DATA
+Text GLabel 7950 5050 0    30   Input ~ 0
+CLK
+Text GLabel 7950 4850 0    30   Input ~ 0
+VJACK
+Text GLabel 7950 5150 0    30   Input ~ 0
+GND
+Wire Wire Line
+	7950 4850 8000 4850
+Wire Wire Line
+	8000 4950 7950 4950
+Wire Wire Line
+	7950 5050 8000 5050
+Wire Wire Line
+	8000 5150 7950 5150
+$Comp
+L CONN_2 P?
+U 1 1 5542B430
+P 7150 4950
+F 0 "P?" V 7100 4950 40  0000 C CNN
+F 1 "CONN_2" V 7200 4950 40  0000 C CNN
+F 2 "" H 7150 4950 60  0000 C CNN
+F 3 "" H 7150 4950 60  0000 C CNN
+	1    7150 4950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6800 4750 6800 4850
+Wire Wire Line
+	6800 4850 6750 4850
+Wire Wire Line
+	6750 5050 6800 5050
+Wire Wire Line
+	6800 5050 6800 5150
 $EndSCHEMATC

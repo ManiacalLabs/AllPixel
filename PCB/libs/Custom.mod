@@ -1,9 +1,11 @@
-PCBNEW-LibModule-V1  11/23/2013 7:40:13 PM
+PCBNEW-LibModule-V1  4/30/2015 9:13:07 PM
 # encoding utf-8
 Units mm
 $INDEX
+20mil_drill
 BARREL_JACK_ROUND_PADS
 C1_noborder
+CP_10x12.5mm_Half
 CP_6.3x11mm_90
 ICSP_shifted_pads
 ML_BATTCON_12MM_PTH_CIRCULAR_PADS
@@ -23,6 +25,22 @@ pin_strip_8
 pin_strip_8_round
 pin_strip_8_shifted
 $EndINDEX
+$MODULE 20mil_drill
+Po 0 0 0 15 5542C640 00000000 ~~
+Li 20mil_drill
+Sc 0
+AR 
+Op 0 0 0
+T0 0.1 -3.2 1 1 0 0.15 N I 21 N "20mil_drill"
+T1 0.05 3.75 1 1 0 0.15 N I 21 N "VAL**"
+$PAD
+Sh "" C 0.508 0.508 0 0 0
+Dr 0.508 0 0
+At HOLE N 00C0FFFF
+Ne 0 ""
+Po 0 0
+$EndPAD
+$EndMODULE 20mil_drill
 $MODULE BARREL_JACK_ROUND_PADS
 Po 0 0 0 15 52914ACC 00000000 ~~
 Li BARREL_JACK_ROUND_PADS
@@ -91,6 +109,45 @@ Of 0 0 0
 Ro 0 0 0
 $EndSHAPE3D
 $EndMODULE C1_noborder
+$MODULE CP_10x12.5mm_Half
+Po 0 0 0 15 5542D308 00000000 ~~
+Li CP_10x12.5mm_Half
+Cd Capacitor, pol, cyl 10x12.5mm
+Sc 0
+AR /553B1ABE
+Op 0 0 0
+T0 0 -6.6 1.524 1.524 0 0.3048 N I 21 N "C5"
+T1 0 6.6 1.524 1.524 0 0.3048 N I 21 N "CP1"
+DS 0 -5.334 0 -4.572 0.3048 21
+DS 0 -5.08 -1.524 -5.08 0.3048 21
+DS -1.524 -5.08 -2.032 -4.826 0.3048 21
+DS -2.032 -4.826 0 -4.826 0.3048 21
+DS 0 -4.826 0 -4.572 0.3048 21
+DS 0 -4.572 -2.794 -4.572 0.3048 21
+DA 0 0 0 5.334 900 0.3048 21
+DA 0 0 -5.334 0 900 0.3048 21
+DS -3.072 -3.3135 -1.572 -3.3135 0.5 21
+$PAD
+Sh "1" R 1.8 1.8 0 0 0
+Dr 0.8 0 0
+At STD N 00E0FFFF
+Ne 2 "VJACK"
+Po 0 2.5
+$EndPAD
+$PAD
+Sh "2" C 1.8 1.8 0 0 0
+Dr 0.8 0 0
+At STD N 00E0FFFF
+Ne 1 "GND"
+Po 0 -2.5
+$EndPAD
+$SHAPE3D
+Na "walter/capacitors/cp_10x12.5mm.wrl"
+Sc 1 1 1
+Of 0 0 0
+Ro 0 0 0
+$EndSHAPE3D
+$EndMODULE CP_10x12.5mm_Half
 $MODULE CP_6.3x11mm_90
 Po 0 0 0 15 529146CC 00000000 ~~
 Li CP_6.3x11mm_90
