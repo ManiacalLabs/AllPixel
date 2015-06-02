@@ -55,15 +55,15 @@ time.sleep(0.1)
 
 For the DriverSerial instance:
 
--"type" doesn't matter but just leave it GENERIC. 
--"num" **must** be 32*32 or 1024 
--"hardwareID" is set above to the USB VID/PID of the Teensy 3.1 which is different from the default value used for the AllPixel. For autodetection, this value must be overriden with "16C0:0483". If this does not work, use "dev".
--"dev" is optional and get be set to the serial port name (like "COM5" or "/dev/ttyUSB1") if not using "hardwareID"
+- "type" doesn't matter but just leave it GENERIC. 
+- "num" **must** be 32*32 or 1024 
+- "hardwareID" is set above to the USB VID/PID of the Teensy 3.1 which is different from the default value used for the AllPixel. For autodetection, this value must be overriden with "16C0:0483". If this does not work, use "dev".
+- "dev" is optional and get be set to the serial port name (like "COM5" or "/dev/ttyUSB1") if not using "hardwareID"
 
 For the LEDMatrix instance:
 
--"serpentine" **must** be False since the display is not a serpentine layout but True is the default value.
--"threadedUpdate" is option and can sometimes speed up pushing to the display
+- "serpentine" **must** be False since the display is not a serpentine layout but True is the default value.
+- "threadedUpdate" is option and can sometimes speed up pushing to the display
 
 That's it! For more details on using BiblioPixel check out the [BiblioPixel Wiki](https://github.com/ManiacalLabs/BiblioPixel/wiki).
 
