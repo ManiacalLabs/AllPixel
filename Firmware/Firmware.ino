@@ -1,153 +1,33 @@
+#include <SmartMatrix.h>
 #include <FastLED.h>
 #include <EEPROM.h>
 #include "global.h"
-//#include "SPI.h"
+
+#define kMatrixWidth  32
+#define kMatrixHeight 32
+const bool    kMatrixSerpentineLayout = false;
 
 CRGB * _fastLEDs;
 
 
-uint16_t numLEDs = 1;
-CLEDController * pLed = NULL;
+uint16_t numLEDs = (kMatrixWidth * kMatrixHeight);
 bool errorPixelCount = false;
 uint8_t bytesPerPixel = 3;
 
 inline void setupFastLED()
 {
-	switch (config.type)
-	{
-#ifdef GENERIC
-	case GENERIC:
-		//update this to whatever your setup uses
-		bytesPerPixel = 3;
-		break;
-#endif
-
-		//Most things use 3 bytes per pixel
-		//Easier to use a catch all and then handle other cases
-	default:
-		bytesPerPixel = 3;
-		break;
-	}
-
-	if (((freeRam() - FREE_RAM_BUFFER) / bytesPerPixel) < config.pixelCount)
-	{
-		errorPixelCount = true;
-		writeDefaultConfig();
-		return;
-	}
-
 	_fastLEDs = (CRGB*)malloc(sizeof(CRGB)*numLEDs);
 	memset(_fastLEDs, 0, sizeof(CRGB)*numLEDs);
 
-	switch (config.type)
-	{
-#ifdef GENERIC
-	case GENERIC:
-		//Do setup here for bypassing normal chipset control
-		break;
-#endif
-
-//SPI Based Chipsets
-#ifdef LPD8806
-	case LPD8806:
-		pLed = new LPD8806Controller < SPI_DATA, SPI_CLOCK, RGB>();
-		break;
-#endif
-#ifdef WS2801
-	case WS2801:
-		pLed = new WS2801Controller<SPI_DATA, SPI_CLOCK, RGB>();
-		break;
-#endif
-#ifdef SM16716
-	case SM16716:
-		pLed = new SM16716Controller<SPI_DATA, SPI_CLOCK, RGB>();
-		break;
-#endif
-#ifdef APA102
-	case APA102:
-		pLed = new APA102Controller<SPI_DATA, SPI_CLOCK, RGB>();
-		break;
-#endif
-#ifdef P9813
-	case P9813:
-		pLed = new P9813Controller<SPI_DATA, SPI_CLOCK, RGB>();
-		break;
-#endif
-
-//One Wire Chipsets
-#ifdef NEOPIXEL
-	case NEOPIXEL:
-		pLed = new WS2811Controller800Khz<ONEWIREPIN, RGB>();
-		break;
-#endif
-#ifdef WS2811_400
-	case WS2811_400:
-		pLed = new WS2811Controller400Khz<ONEWIREPIN, RGB>();
-		break;
-#endif
-#ifdef TM1809_TM1804
-	case TM1809_TM1804:
-		pLed = new TM1809Controller800Khz<ONEWIREPIN, RGB>();
-		break;
-#endif
-#ifdef TM1803
-	case TM1803:
-		pLed = new TM1803Controller400Khz<ONEWIREPIN, RGB>();
-		break;
-#endif
-#ifdef UCS1903
-	case UCS1903:
-		pLed = new UCS1903Controller400Khz<ONEWIREPIN, RGB>();
-		break;
-#endif
-#ifdef LPD1886
-	case LPD1886:
-		pLed = new LPD1886Controller1250Khz<ONEWIREPIN, RGB>();
-		break;
-#endif
-
-	default:
-		//Nothing happens. No chipset configured. Not exactly an error condition
-		break;
-	}
-
-	if (pLed)
-	{
-		FastLED.addLeds(pLed, _fastLEDs, numLEDs);
-	}
-
-	setSPIRate(config.spiSpeed);
+	FastLED.addLeds<SMART_MATRIX>(_fastLEDs, numLEDs);
 
     //FastLED.setDither(DISABLE_DITHER);
 	FastLED.clear();
 	FastLED.show();
 }
 
-void setSPIRate(uint8_t speed) {
-	SPCR &= ~((1 << SPR1) | (1 << SPR0)); 	// clear out the prescalar bits
-
-	bool b2x = false;
-	uint8_t _SPI_CLOCK_DIVIDER = DATA_RATE_MHZ(speed);
-
-	if (_SPI_CLOCK_DIVIDER >= 128) { SPCR |= (1 << SPR1); SPCR |= (1 << SPR0); }
-	else if (_SPI_CLOCK_DIVIDER >= 64) { SPCR |= (1 << SPR1); }
-	else if (_SPI_CLOCK_DIVIDER >= 32) { SPCR |= (1 << SPR1); b2x = true; }
-	else if (_SPI_CLOCK_DIVIDER >= 16) { SPCR |= (1 << SPR0); }
-	else if (_SPI_CLOCK_DIVIDER >= 8) { SPCR |= (1 << SPR0); b2x = true; }
-	else if (_SPI_CLOCK_DIVIDER >= 4) { /* do nothing - default rate */ }
-	else { b2x = true; }
-
-	if (b2x) { SPSR |= (1 << SPI2X); }
-	else { SPSR &= ~(1 << SPI2X); }
-}
-
 void setup()
 {
-	pinMode(0, OUTPUT);
-	digitalWrite(0, HIGH);
-	digitalWrite(rebootPin, LOW);
-	pinMode(rebootPin, OUTPUT);
-
 	Serial.begin(1000000);
 	Serial.setTimeout(1000);
 
@@ -159,7 +39,6 @@ void setup()
 	}
 
 	readConfig();
-	numLEDs = config.pixelCount;
 
 	setupFastLED();
 }
@@ -185,7 +64,7 @@ inline void getData()
 			Serial.write(RETURN_CODES::ERROR_PIXEL_COUNT);
 			Serial.flush();
 			delay(100);
-			doReboot();
+			//doReboot();
 		}
 		else if (cmd == CMDTYPE::PIXEL_DATA)
 		{
@@ -256,64 +135,11 @@ inline void getData()
 				}
 				else
 				{
-					//validate strip type and set pixelCount
-					switch (temp.type)
-					{
-				#ifdef GENERIC
-					case GENERIC:
-						//update this to whatever your setup uses
-						temp.pixelCount = temp.pixelCount / 3;
-						break;
-				#endif
+					temp.pixelCount = temp.pixelCount / bytesPerPixel;
 
-						//One of these NEEDS to be defined, otherwise comment out the whole block
-				#ifdef LPD8806
-					case LPD8806:
-				#endif
-				#ifdef WS2801
-					case WS2801:
-				#endif
-				#ifdef NEOPIXEL
-					case NEOPIXEL:
-				#endif
-				#ifdef WS2811_400
-					case WS2811_400:
-				#endif
-				#ifdef TM1809_TM1804
-					case TM1809_TM1804:
-				#endif
-				#ifdef TM1803
-					case TM1803:
-				#endif
-				#ifdef UCS1903
-					case UCS1903:
-				#endif
-				#ifdef SM16716
-					case SM16716:
-				#endif
-				#ifdef APA102
-					case APA102:
-				#endif
-				#ifdef LPD1886
-					case LPD1886:
-				#endif
-				#ifdef P9813
-					case P9813:
-				#endif
-					case 255: //This is just so that this case remains valid but uncalled if all options are not defined
-						temp.pixelCount = temp.pixelCount / 3;
-						break;
-					default:
-						result = RETURN_CODES::ERROR_UNSUPPORTED;
-						break;
+					if(temp.pixelCount != numLEDs){
+						result = RETURN_CODES::ERROR_PIXEL_COUNT;
 					}
-
-					if (temp.spiSpeed < 1 || temp.spiSpeed > 24)
-						result = RETURN_CODES::ERROR_UNSUPPORTED;
-				#ifdef WS2801
-					if (temp.type == WS2801)
-						temp.spiSpeed = 1;
-				#endif
 
 					if (result == RETURN_CODES::SUCCESS && memcmp(&temp, &config, sizeof(config_t)) != 0)
 					{
@@ -321,10 +147,10 @@ inline void getData()
 
 						writeConfig(); //save changes for next reboot
 
-						Serial.write(RETURN_CODES::REBOOT); //send reboot needed
+						Serial.write(RETURN_CODES::SUCCESS);
 						Serial.flush();
-						delay(100);
-						doReboot(); //Reboot and start over
+						// delay(100);
+						// doReboot(); //Reboot and start over
 					}
 
 					//On config we reset the brightness.

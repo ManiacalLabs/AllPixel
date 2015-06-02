@@ -23,8 +23,8 @@ template <class T> int EEPROM_readAnything(int ee, T& value)
 #define rebootPin 15
 inline void doReboot()
 {
-	digitalWrite(rebootPin, HIGH);
-	while (1);
+	// digitalWrite(rebootPin, HIGH);
+	// while (1);
 }
 
 namespace CMDTYPE
@@ -58,30 +58,17 @@ namespace RETURN_CODES
 
 #define FREE_RAM_BUFFER 180
 
+#define GENERIC 0
 
-//#define GENERIC 0
-#define LPD8806 1
-#define WS2801 2
-//NEOPIXEL also known as WS2811, WS2812, WS2812B, APA104
-#define NEOPIXEL 3
-//400khz variant of above
-#define WS2811_400 4
-#define TM1809_TM1804 5
-#define TM1803 6
-#define UCS1903 7
-#define SM16716 8
-#define APA102 9
-#define LPD1886 10 
-#define P9813 11 
-
-struct config_t
+typedef struct __attribute__((__packed__)) 
 {
 	uint8_t type;
 	uint16_t pixelCount;
 	uint8_t spiSpeed;
-} config;
-#define CONFIGCHECK 7
+} config_t;
+config_t config;
 
+#define CONFIGCHECK 7
 
 void writeConfig()
 {
@@ -101,9 +88,9 @@ void writeDefaultConfig()
 	writeConfig();
 }
 
-uint32_t freeRam()
-{
-	extern int __heap_start, *__brkval;
-	int v;
-	return (int)&v - (__brkval == 0 ? (int)&__heap_start : (int)__brkval);
-}
+// uint32_t freeRam()
+// {
+// 	extern int __heap_start, *__brkval;
+// 	int v;
+// 	return (int)&v - (__brkval == 0 ? (int)&__heap_start : (int)__brkval);
+// }
