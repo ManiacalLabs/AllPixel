@@ -63,7 +63,7 @@ For the DriverSerial instance:
 For the LEDMatrix instance:
 
 - "serpentine" **must** be False since the display is not a serpentine layout but True is the default value.
-- "threadedUpdate" is option and can sometimes speed up pushing to the display
+- "threadedUpdate" is optional and can sometimes speed up pushing to the display
 
 That's it! For more details on using BiblioPixel check out the [BiblioPixel Wiki](https://github.com/ManiacalLabs/BiblioPixel/wiki).
 
