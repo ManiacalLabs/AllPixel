@@ -1,4 +1,10 @@
+#ifndef GLOBAL_H
+#define GLOBAL_H
 #include <EEPROM.h>
+#include "FastLED.h"
+
+uint16_t numLEDs = 1;
+CRGB * _fastLEDs;
 
 template <class T> int EEPROM_writeAnything(int ee, const T& value)
 {
@@ -67,8 +73,8 @@ namespace RETURN_CODES
 #define UCS1903 7
 #define SM16716 8
 #define APA102 9
-#define LPD1886 10 
-#define P9813 11 
+#define LPD1886 10
+#define P9813 11
 
 struct config_t
 {
@@ -104,3 +110,6 @@ uint32_t freeRam()
 	int v;
 	return (int)&v - (__brkval == 0 ? (int)&__heap_start : (int)__brkval);
 }
+
+
+#endif GLOBAL_H
