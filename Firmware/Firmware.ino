@@ -3,14 +3,13 @@
 #include <EEPROM.h>
 #include "global.h"
 
-#define kMatrixWidth  32
-#define kMatrixHeight 32
-const bool    kMatrixSerpentineLayout = false;
+#define NUM_LEDS_PER_STRIP 16
+#define NUM_STRIPS 8
+//WS2811_PORTDC: 2,14,7,8,6,20,21,5,15,22,23,9,10,13,11,12 - 16 way parallel
 
 CRGB * _fastLEDs;
 
-
-uint16_t numLEDs = (kMatrixWidth * kMatrixHeight);
+uint16_t numLEDs = NUM_STRIPS * NUM_LEDS_PER_STRIP;
 bool errorPixelCount = false;
 uint8_t bytesPerPixel = 3;
 
@@ -19,7 +18,7 @@ inline void setupFastLED()
 	_fastLEDs = (CRGB*)malloc(sizeof(CRGB)*numLEDs);
 	memset(_fastLEDs, 0, sizeof(CRGB)*numLEDs);
 
-	FastLED.addLeds<SMART_MATRIX>(_fastLEDs, numLEDs);
+	LEDS.addLeds<WS2811_PORTDC,NUM_STRIPS>(_fastLEDs, NUM_LEDS_PER_STRIP);
 
     //FastLED.setDither(DISABLE_DITHER);
 	FastLED.clear();
@@ -76,7 +75,7 @@ inline void getData()
 				while (count < packSize - 1)
 				{
 					c = Serial.readBytes(((char*)_fastLEDs) + count, packSize - count);
-					if (c == 0) 
+					if (c == 0)
 					{
 						emptyCount++;
 						if(emptyCount > EMPTYMAX) break;
@@ -154,7 +153,7 @@ inline void getData()
 					}
 
 					//On config we reset the brightness.
-					//Otherwise previous brightness values could 
+					//Otherwise previous brightness values could
 					//still be in memory.
 					FastLED.setBrightness(255);
 					FastLED.setDither(1);
