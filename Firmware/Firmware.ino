@@ -3,8 +3,8 @@
 #include <EEPROM.h>
 #include "global.h"
 
-#define NUM_LEDS_PER_STRIP 40
-#define NUM_STRIPS 8
+#define NUM_LEDS_PER_STRIP 64
+#define NUM_STRIPS 16
 //WS2811_PORTDC: 2,14,7,8,6,20,21,5,15,22,23,9,10,13,11,12 - 16 way parallel
 
 CRGB * _fastLEDs;
