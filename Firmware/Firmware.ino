@@ -1,4 +1,3 @@
-#include <SmartMatrix.h>
 #include <FastLED.h>
 #include <EEPROM.h>
 #include "global.h"
