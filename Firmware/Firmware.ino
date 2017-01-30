@@ -1,7 +1,6 @@
 #include "FastLED.h"
 #include <EEPROM.h>
 #include "global.h"
-//#include "SPI.h"
 
 CRGB * _fastLEDs;
 
@@ -191,10 +190,10 @@ inline void getData()
 
 			if (size == packSize)
 			{
-				while (count < packSize - 1)
+				while (count < packSize)
 				{
 					c = Serial.readBytes(((char*)_fastLEDs) + count, packSize - count);
-					if (c == 0) 
+					if (c == 0)
 					{
 						emptyCount++;
 						if(emptyCount > EMPTYMAX) break;
@@ -325,7 +324,7 @@ inline void getData()
 					}
 
 					//On config we reset the brightness.
-					//Otherwise previous brightness values could 
+					//Otherwise previous brightness values could
 					//still be in memory.
 					FastLED.setBrightness(255);
 					FastLED.setDither(1);
@@ -352,6 +351,15 @@ inline void getData()
 			}
 
 			Serial.write(result);
+		}
+		else if (cmd == CMDTYPE::GETVER)
+		{
+			Serial.write(RETURN_CODES::SUCCESS);
+			Serial.write(FIRMWARE_VER);
+		}
+		else
+		{
+			Serial.write(RETURN_CODES::ERROR_BAD_CMD);
 		}
 
 

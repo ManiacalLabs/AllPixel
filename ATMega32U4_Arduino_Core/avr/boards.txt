@@ -1,0 +1,39 @@
+atusb.name=ATMega32u4 Core
+atusb.upload.maximum_size=32256
+atusb.upload.maximum_data_size=2560
+atusb.upload.tool=avrdude
+atusb.upload.protocol=avr109
+
+atusb.bootloader.tool=avrdude
+atusb.bootloader.low_fuses=0xff
+atusb.bootloader.high_fuses=0xdf
+atusb.bootloader.extended_fuses=0xc8
+atusb.bootloader.path=empty
+atusb.bootloader.file=empty/32u4_empty.hex
+atusb.bootloader.unlock_bits=0x3F
+atusb.bootloader.lock_bits=0x2F
+
+atusb.build.board=ATMEGA32U4
+atusb.build.core=atusb
+atusb.build.mcu=atmega32u4
+atusb.build.warn_data_percentage=80
+atusb.build.toolchain=avr/bin/
+atusb.build.command.gcc=avr-gcc
+atusb.build.command.g++=avr-g++
+atusb.build.command.ar=avr-ar
+atusb.build.command.objcopy=avr-objcopy
+atusb.build.command.objdump=avr-objdump
+atusb.build.command.size=avr-size
+atusb.build.flags.common=-g -Wall -ffunction-sections -fdata-sections
+atusb.build.flags.dep=-MMD
+atusb.build.flags.optimize=-Os
+atusb.build.flags.cpu=-mmcu=atmega32u4
+atusb.build.flags.defs=-DTEENSYDUINO=134 -DARDUINO_ARCH_AVR -DUSB_SERIAL -DLAYOUT_US_ENGLISH -DF_CPU=16000000L
+atusb.build.flags.cpp=-fno-exceptions -felide-constructors -std=c++0x
+atusb.build.flags.c=
+atusb.build.flags.S=-x assembler-with-cpp
+atusb.build.flags.ld=-Wl,--gc-sections,--relax
+atusb.build.flags.ldspecs=
+atusb.build.flags.libs=-lm
+atusb.build.serial_number=true
+atusb.serial.restart_cmd=true

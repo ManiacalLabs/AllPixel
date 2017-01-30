@@ -1,5 +1,7 @@
 #include <EEPROM.h>
 
+#define FIRMWARE_VER 3
+
 template <class T> int EEPROM_writeAnything(int ee, const T& value)
 {
 	const byte* p = (const byte*)(const void*)&value;
@@ -34,6 +36,7 @@ namespace CMDTYPE
 		BRIGHTNESS = 3,
 		GETID      = 4,
 		SETID      = 5,
+		GETVER	   = 6
 	};
 }
 
@@ -47,6 +50,7 @@ namespace RETURN_CODES
 		ERROR_SIZE = 1,
 		ERROR_UNSUPPORTED = 2,
 		ERROR_PIXEL_COUNT = 3,
+		ERROR_BAD_CMD = 4,
 	};
 }
 
@@ -67,8 +71,8 @@ namespace RETURN_CODES
 #define UCS1903 7
 #define SM16716 8
 #define APA102 9
-#define LPD1886 10 
-#define P9813 11 
+#define LPD1886 10
+#define P9813 11
 
 struct config_t
 {
