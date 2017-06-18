@@ -1,0 +1,14 @@
+** Drc report for C:\Users\dan\Documents\MLGITLAB\AllPixelMini\PCB\APmini.kicad_pcb **
+** Created on  **
+
+** Found 2 DRC errors **
+ErrType(19): Pad near pad
+    @ (26.600 mm,38.200 mm): Pad SLOT on F.Cu, B.Cu, Internal, Non-copper of CON1
+    @ (26.600 mm,38.201 mm): Pad S1 on F.Cu, Non-copper of CON1
+ErrType(19): Pad near pad
+    @ (26.600 mm,44.800 mm): Pad SLOT on F.Cu, B.Cu, Internal, Non-copper of CON1
+    @ (26.600 mm,44.799 mm): Pad S2 on F.Cu, Non-copper of CON1
+
+** Found 0 unconnected pads **
+
+** End of Report **

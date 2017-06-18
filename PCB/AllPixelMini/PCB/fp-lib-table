@@ -1,0 +1,10 @@
+(fp_lib_table
+  (lib (name ML_Kicad)(type Legacy)(uri "$(KIPRJMOD)/libs/ML_Kicad.mod")(options "")(descr ""))
+  (lib (name APM_BarrelJack)(type KiCad)(uri "$(KIPRJMOD)/libs/APM_BarrelJack.pretty")(options "")(descr ""))
+  (lib (name APM_USBConn)(type KiCad)(uri "$(KIPRJMOD)/libs/APM_USBConn.pretty")(options "")(descr ""))
+  (lib (name Crystals_RevB_25Apr2012)(type Legacy)(uri "$(KIPRJMOD)/libs/Crystals_RevB_25Apr2012.mod")(options "")(descr ""))
+  (lib (name APM_CrystalSMD)(type KiCad)(uri "$(KIPRJMOD)/libs/APM_CrystalSMD.pretty")(options "")(descr ""))
+  (lib (name ML_ICSP_PADS)(type KiCad)(uri "$(KIPRJMOD)/libs/ML_ICSP_PADS.pretty")(options "")(descr ""))
+  (lib (name LOGOS)(type KiCad)(uri "$(KIPRJMOD)\\libs\\LOGOS")(options "")(descr ""))
+  (lib (name APM_0603R_dist_m635)(type KiCad)(uri "$(KIPRJMOD)\\libs\\APM_0603R_dist_m635.pretty")(options "")(descr ""))
+)

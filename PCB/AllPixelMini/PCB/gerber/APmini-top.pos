@@ -1,0 +1,26 @@
+### Module positions - created on 03/14/17 06:36:23 ###
+### Printed by Pcbnew version kicad 4.0.4-stable
+## Unit = mm, Angle = deg.
+## Side : top
+# Ref     Val               Package                                  PosX       PosY       Rot  Side
+C1        22pF              C_0603                                59.5000   -47.7500   90.0000  top
+C2        22pF              C_0603                                51.5000   -47.5000   90.0000  top
+C3        1uF               C_0603                                39.0000   -34.0000    0.0000  top
+C4        1uF               C_0603                                33.0000   -43.0000  180.0000  top
+C5        470uF             c_elec_10x10                          46.2500   -28.0000   90.0000  top
+C6        470uF             c_elec_10x10                          58.0000   -28.0000   90.0000  top
+CON1      ML_USB_MINI       MF_Connectors-MICROUSB-RIGHT          27.1000   -41.5000  270.0000  top
+D1        PWRGOOD           LED_0603                              53.7500   -35.7500    0.0000  top
+D2        DIODES_B140_SMA   MF_Discrete_Semiconductor-SMA         38.5000   -29.5000  270.0000  top
+F1        250mA             C_1206                                34.2500   -36.5000  180.0000  top
+R1        1k                0603R_dist_m635                       53.7500   -39.2500  180.0000  top
+R2        10k               0603R_dist_m635                       34.5000   -45.2500   90.0000  top
+R3        22                0603R_dist_m635                       33.0000   -39.0000    0.0000  top
+R4        22                0603R_dist_m635                       33.0000   -41.0000    0.0000  top
+R5        1k                0603R_dist_m635                       53.7500   -37.5000  180.0000  top
+R6        330               0603R_dist_m635                       56.5000   -40.5000  270.0000  top
+R7        330               0603R_dist_m635                       56.5000   -44.2500  270.0000  top
+R8        1k                0603R_dist_m635                       32.5000   -45.2500  270.0000  top
+U1        ATMEGA16U4/32U4   TQFP-44_10x10mm_Pitch0.8mm            43.7500   -41.7500    0.0000  top
+U2        NPN_BJT_SOT-23-3  MF_Discrete_Semiconductor-SOT-23-3    53.0000   -43.0000  270.0000  top
+## End

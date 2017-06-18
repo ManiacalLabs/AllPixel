@@ -1,0 +1,17 @@
+(module ML_Kicad:ML_BARREL_JACK_ROUND_PADS_SHORT (layer F.Cu) (tedit 53D503A9)
+  (descr "DC Barrel Jack")
+  (tags "Power Jack")
+  (fp_text reference CON2 (at 10.09904 0 90) (layer F.SilkS) hide
+    (effects (font (size 1.016 1.016) (thickness 0.2032)))
+  )
+  (fp_text value BARREL_JACK (at 0 -5.99948) (layer F.SilkS) hide
+    (effects (font (size 1.016 1.016) (thickness 0.2032)))
+  )
+  (fp_line (start -2.7005 -4.50088) (end -2.7005 4.50088) (layer F.SilkS) (width 0.381))
+  (fp_line (start -2.70062 4.50088) (end 7.00024 4.50088) (layer F.SilkS) (width 0.381))
+  (fp_line (start 7.00024 4.50088) (end 7.00024 -4.50088) (layer F.SilkS) (width 0.381))
+  (fp_line (start 7.00024 -4.50088) (end -2.70062 -4.50088) (layer F.SilkS) (width 0.381))
+  (pad 1 thru_hole circle (at 6.20014 0) (size 4.5 4.5) (drill 2.99974) (layers *.Cu *.Mask F.SilkS))
+  (pad 2 thru_hole circle (at 0.20066 0) (size 4.5 4.5) (drill 2.99974) (layers *.Cu *.Mask F.SilkS))
+  (pad 3 thru_hole circle (at 3.2004 4.699) (size 4.5 4.5) (drill 2.99974) (layers *.Cu *.Mask F.SilkS))
+)

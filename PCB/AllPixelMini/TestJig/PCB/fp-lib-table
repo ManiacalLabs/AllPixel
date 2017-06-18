@@ -1,0 +1,6 @@
+(fp_lib_table
+  (lib (name LOGOS)(type KiCad)(uri "$(KIPRJMOD)\\libs\\LOGOS")(options "")(descr ""))
+  (lib (name libs)(type KiCad)(uri "$(KIPRJMOD)\\libs")(options "")(descr ""))
+  (lib (name footprints)(type KiCad)(uri "$(KIPRJMOD)\\libs\\footprints")(options "")(descr ""))
+  (lib (name ICSP_1mm097_Drill)(type KiCad)(uri "$(KIPRJMOD)\\libs\\ICSP_1mm097_Drill.pretty")(options "")(descr ""))
+)
